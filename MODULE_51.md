@@ -1,6 +1,8 @@
-**27 Dec, 24**
+**4 Feb, 25**
 
-# Case Study
+## 50-1 Solving The First Case Study
+
+### Case Study
 
 A Medical Database System is needed to enhance the efficiency and effectiveness of healthcare services. This system will be able to seamlessly integrates the information of patients, doctors, appointments, medical records, and medical facilities.
 
@@ -23,3 +25,20 @@ A Medical Database System is needed to enhance the efficiency and effectiveness 
 - Doctors can have multiple appointments with different patients.
 - Each appointment may have a corresponding medical record, and vice versa.
 - A medical facility can have multiple doctors, and a doctor can work in multiple medical facilities. This relationship is represented through a junction table.
+
+### Top-down Design Approach
+
+1. find out core requirements
+2. find out the entity
+3. find out the attributes
+4. find out the relationships
+
+### Case study solution:
+
+- doctor and medical facility --> many to many (creating relationship using another table)
+- appointment and medical record --> one to one
+- patient and appointment --> one to many
+- doctor and appointment --> one to many
+- so doctor and patient --> many to many (solving/merging using appointment table)
+
+![Image](./images/case-study-medical.PNG)
