@@ -42,3 +42,26 @@ A Medical Database System is needed to enhance the efficiency and effectiveness 
 - so doctor and patient --> many to many (solving/merging using appointment table)
 
 ![Image](./images/case-study-medical.PNG)
+
+**10 Feb, 25**
+
+## 50-2 Exploring PSQL and its Default Behavior, Creating Database
+
+- psql shell
+  ![Image](./images/psql_server.PNG)
+  ![Image](./images/psql_server2.PNG)
+
+- to use windows shell, environment variable has to be fixed
+- Steps:
+  - windows button --> env --> go to 'Edit the system environment variable --> environment variable --> system variable --> new --> copy path ( go to c drive --> go to program files --> go to postgreSQL --> go to 17 --> go to bin and copy the path)
+  - `C:\Program Files\PostgreSQL\17\bin`
+
+![Image](./images/psql_server3.PNG)
+![Image](./images/psql_server4.PNG)
+
+- commands:
+  - psql -U user_name
+  - psql -U user_name -D database_name
+    ![Image](./images/psql_server5.PNG)
+    ![Image](./images/psql_server6.PNG)
+    ![Image](./images/psql_server7.PNG)
