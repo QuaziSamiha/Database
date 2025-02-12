@@ -65,3 +65,37 @@ A Medical Database System is needed to enhance the efficiency and effectiveness 
     ![Image](./images/psql_server5.PNG)
     ![Image](./images/psql_server6.PNG)
     ![Image](./images/psql_server7.PNG)
+
+**11 Feb, 25**
+
+- google search: create database postgres with all options
+- commands:
+  - create database test_db2 with template template0
+
+## 50-3 User, Role and Privilege Management in POSTGRES.
+
+- commands:
+  - \dn (to see if there is a schema within the database)
+    ![Image](./images/psql_server8.PNG)
+  - \! cls (to clear)
+  - \du (to see my username)
+    ![Image](./images/psql_server9.PNG)
+    **12 Feb, 25**
+  - create user user1 with login encrypted password '123454'
+  - \du
+  - create role role1 with login encrypted password '123454'
+  - \du
+  - create table test_table (name varchar(50))
+  - \d
+  - insert into test_table(name) values('vutu vai');
+  - select \* from test_table;
+
+## 50-4 Granting and Revoking Privileges
+
+- commands:
+  - psql -U user1 -D postgres
+  - select \* from test_table
+  - grant all privileges on table test_table to user1;
+  - insert into test_table(name) values('putu vai');
+  - create user user2 with login encrypted password '123454'
+  - grant select on table test_table to user2; (giving only view permission to the new user, data insertion permission is not giving to user2)
