@@ -90,12 +90,49 @@ A Medical Database System is needed to enhance the efficiency and effectiveness 
   - insert into test_table(name) values('vutu vai');
   - select \* from test_table;
 
+**11 Feb, 25 & 24 Feb, 25**
+
 ## 50-4 Granting and Revoking Privileges
 
 - commands:
-  - psql -U user1 -D postgres
-  - select \* from test_table
-  - grant all privileges on table test_table to user1;
+  - \conninfo
+  - psql -U user1 -D postgres `(creating user)`
+  - select \* from test_table `(to see the new user)`
+  - grant all privileges on table test_table to user1; `(giving all permission - read, write etc to user1 of table test_table)` -- output will be `GRANT`
+  - select \* from test_table;
+  - create user user2 with encrypted password '123456'
+  - NEW TAB: psql -u user2 -- postgres and password `(access as user2)`
   - insert into test_table(name) values('putu vai');
+  - select \* from test_table;
   - create user user2 with login encrypted password '123454'
-  - grant select on table test_table to user2; (giving only view permission to the new user, data insertion permission is not giving to user2)
+  - select \* from test_table;
+  - grant select on table test_table to user2; `(giving only view permission to the new user, data insertion permission is not giving to user2)`
+  - insert into test_table(name) values('putu vai'); -- `test if we can insert` -- output will be `permission denied`
+  - select \* from test_table;
+  - revoke select on table test_table from user2; -- `taking back all granted permissions`
+  - insert into test_table(name) values('putu vai'); -- `test if we can insert` -- output will be `permission denied`
+  - grant all privileges on all tables; -- `granting permission to all table`
+  - grant all privileges on all tables to user2; -- `granting permission to all table to user2` -- not good practice
+  - grant all privileges on all tables in schema public to user2; -- `giving permission to public`
+  - select \* from test_table;
+  - \!cls -- `clear console`
+  - insert into test_table(name) values('putu vai'); -- `test if we can insert` -- output will be `permission denied`
+  - grant select on all tables in schema public to role1; -- `grant permission to role1 to read any table` -- output `GRANT`
+  - create user user3 with encrypted password '123456' -- OUTPUT `CREATE ROLE`
+  - grant role1 to user3 -- OUTPUT `all permission of role1 will be moved to user3`
+
+**24 Feb, 25**
+
+## 50-5 Structured Query Language (SQL)
+
+- SQL is a declarative language
+- language 2 types : declarative (only have to mention what to work) & imperative (have to mention what and how to work)
+- types of SQL commands:
+
+  - DDL(data definition language) (CREATE, DROP, ALTER, TRUNCATE)
+  - DML(data manipulation language) (INSERT, UPDATE, DELETE)
+  - DCL(data control language) (GRANT, REVOKE)
+  - TCL(transaction control language) (COMMIT, ROLLBACK, SAVEPOINT)
+  - DQL (SELECT)
+
+- client --> (web app, desktop app, mobile app) --> SQL --> postgres/MySQL/Oracle(database Management system - a server) --> databases(db1, db2, db3)
