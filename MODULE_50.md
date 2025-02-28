@@ -136,3 +136,213 @@ A Medical Database System is needed to enhance the efficiency and effectiveness 
   - DQL (SELECT)
 
 - client --> (web app, desktop app, mobile app) --> SQL --> postgres/MySQL/Oracle(database Management system - a server) --> databases(db1, db2, db3)
+
+**25 Feb, 25 & 26 Feb, 25 & 28 Feb, 25**
+
+## 50-6 Exploring pgAdmin and Valentina Studio.
+
+- pgAdmin 4 --> it is a GUI --> we can create database from its terminal --> we can run SQL commands from here --> like MongoDB Compass
+- pgAdmin 4 configurations
+  - postgres --> query tool --> we can run SQL commands from here
+- a server can have multiple databases
+- a database has schema --> under a schema there is default public schema --> a table there remains table
+- we can see the created users to login
+- Alternative UI for SQL:
+  - [Data Grip](https://www.jetbrains.com/datagrip/)
+  - [DBeaver Community](https://dbeaver.io/)
+  - [Table Plus](https://tableplus.com/)
+  - [Valentina Studio](https://www.valentina-db.com/en/download-valentina-studio/current)
+    - cross platform (can be used mac, windows etc)
+    - valentina studio win 64
+    - we can work here by connect following database Postgres, MySQL, MongoDB, Oracle etc.
+
+**28 Feb, 25**
+
+## 50-7 Create, Update and Delete Database and Data Types in POSTGRES.mp4
+
+- `Command to connect postgres database and user:` psql -U postgres -d postgres (run it to command prompt, password: 123456)
+- `to see all database:` \l
+- `clear console:` \!cls
+- `To create a new database called 'test' :` create database test
+- `Update database name using 'alter' : ` alter database test rename to ph
+- `Delete database : ` drop database ph
+
+- Why do we use data types in database columns?
+
+  1. data consistency (convenience and functionality)
+  2. performance (storage efficiency)
+  3. constraint enforcement
+
+- `data types in postgres`: boolean, numbers, binary, date/time, json, character, UUID, Array, XML, etc.
+- boolean data type: true, false, null.
+- integer data type: INT, BIGINT, SMALLINT, FLOAT4(Single precision), FLOAT8(Double precision), NUMERIC (precision, scale), Serial.
+
+### Integers
+
+- INT:
+  - Range: -2,147,483,648 to 2,147,483,647
+  - storage: 4 bytes
+  - The INT data type is commonly used for integer values within the standard range.
+- BIGINT:
+  - range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+  - storage: 8 bytes
+  - BIGINT provides a larger range than INT and is suitable for storing very large integer values.
+- SMALLINT:
+  - range: -32,768, to 32,768
+  - storage: 2 bytes
+  - SMALLINT is suitable for storing small integer values within a more limited range.
+- FLOAT4(Single Precision):
+  - storage: 4 bytes
+  - 6 digit precision
+- FLOAT8(Double Precision):
+  - storage: 8 bytes
+  - 15 digit precision
+- NUMERIC(precision, scale):
+  - range: unlimited precision
+  - storage: variable (depends on the input precision and scale values)
+  - ex: NUMERIC(4,3)
+- Serial:
+  - range: like integers
+  - auto-incrementing integer
+
+### Characters
+
+- CHAR:
+
+  - CHAR is a fixed-length character type.
+  - storage: The length is fixed and specified when defining the column.
+  - if the actual string is shorter than the specified length, it is padded with spaces.
+  - example: CHAR(10) means a fixed length string of 10 characters.
+
+- VARCHAR:
+
+  - VARCHAR is variable length character type.
+  - storage: the length is not fixed and can vary up to the specified maximum length.
+  - No padding with spaces is done, so it is more storage-efficient when dealing with variable-length string with a maximum length of 255 characters.
+
+- TEXT:
+  - TEXT is also a variable-length character type.
+  - storage: similar to VARCHAR, it is not fixed in length.
+  - Typically used for longer text strings where the exact length is not known or can vary widely.
+  - Example: TEXT is often used for columns containing large amounts of text.
+
+### Date
+
+- TIME
+  - HH:MM:SS
+- TIMESTAMPTZ (TIMESTAMP WITH TIME TIME ZONE)
+  - YYYY-MM-DD HH:MI:SS:00-08
+- TIME STAMP WITHOUT TIME ZONE
+  - YYYY-MM-DD HH:MI:SS
+
+### UUID
+
+- it is a data type in PostgreSQL used to store universally unique identifiers.
+- storage: it is a 128-bit value, typically displayed as 32 hexadecimal characters separated by hyphens.
+- ex: 3C0ab34f-51f4-4d7b-84ee-b197af61dcb3
+
+## 50-8 Creating a Table with Multiple Columns and Different Data Types
+
+- Commands:
+
+```
+CREATE DATABASE ph;
+```
+
+```
+-- creating table
+
+CREATE TABLE person (
+	person_id SERIAL,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50),
+	age INTEGER,
+	is_active BOOLEAN,
+	dob DATE
+)
+```
+
+```
+ALTER TABLE person RENAME TO users;
+```
+
+```
+DROP TABLE users;
+```
+
+## 50-9 Creating a Table with Multiple Columns and Column Constraints
+
+- Column Constraint :
+
+  - NOT NULL
+  - UNIQUE (such as email)
+  - PRIMARY KEY (NOT NULL + UNIQUE)
+  - FOREIGN KEY
+  - DEFAULT
+  - CHECK (can provide custom validation)
+
+- Command:
+
+```
+ -- creating table with constraint
+
+CREATE TABLE person2 (
+	id SERIAL NOT NULL,
+	user_name VARCHAR(50) NOT NULL,
+	age INTEGER CHECK (age >= 18),
+	is_active BOOLEAN DEFAULT true
+)
+```
+
+## 50-10 Different Methods to Define Constraints.
+
+- we can add multiple constraint to a single column.
+- composite key : combination of multiple columns.
+
+```
+CREATE TABLE person2 (
+	user_id SERIAL,
+	user_name VARCHAR(50) NOT NULL UNIQUE,
+	age INTEGER CHECK (age >= 18),
+	PRIMARY KEY(user_id)
+)
+```
+
+```
+CREATE TABLE person2 (
+	user_id SERIAL,
+	user_name VARCHAR(50) NOT NULL UNIQUE,
+	age INTEGER CHECK (age >= 18),
+	PRIMARY KEY(user_id, user_name)
+)
+```
+
+```
+CREATE TABLE person2 (
+	user_id SERIAL,
+	user_name VARCHAR(50) NOT NULL,
+	age INTEGER CHECK (age >= 18),
+	PRIMARY KEY(user_id),
+  UNIQUE(user_name)
+)
+```
+
+```
+CREATE TABLE person2 (
+	user_id SERIAL,
+	user_name VARCHAR(50) NOT NULL,
+	age INTEGER CHECK (age >= 18),
+	PRIMARY KEY(user_id),
+  UNIQUE(user_name, age)
+)
+```
+
+## 50-11 Inserting Data into a Table and Checking Constraints
+
+```
+INSERT INTO person2 (id, user_name, age) VALUES(1, 'putu', 2);
+```
+
+```
+INSERT INTO person2 (id, user_name, age) VALUES(1, 'putu', 2), (2, 'vutu', 5);
+```
