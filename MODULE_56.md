@@ -70,3 +70,19 @@ yarn dev
 ## 56-6 Implementing Relation Filters
 
 - make some post published status true for filtering
+
+**8 Mar, 25**
+
+## 56-7 Advanced Filtering with AND & OR Operators
+
+- create filtering.ts file and modify package.json file
+
+## 56-8 Utilizing startsWith and contains Filters
+
+**9 Mar, 25**
+
+## 56-9 Employing endsWith and equals Filters
+
+## 56-10 Activating Logging for Enhanced Monitoring
+
+- create logging.ts file and modify package.json
