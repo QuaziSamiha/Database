@@ -1,0 +1,76 @@
+//? 6 Mar, 25
+//? 7 Mar, 25
+// ? 9 Mar, 25
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id           Int            @id @default(autoincrement())
+  title        String
+  content      String
+  published    Boolean        @default(false)
+  authorId     Int
+  author       User           @relation(fields: [authorId], references: [id])
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  postCategory PostCategory[] //? many-to-many relation
+
+  @@map("posts") // changing the table name, not the schema name
+}
+
+// ? 6 Mar, 25
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  email    String
+  role     UserRole @default(user) // enum
+  // role     UserRole // enum
+  age      Int      @default(0)
+  profile  Profile? //? one-to-one relation and profile is an optional field.
+  //? userId Int     @unique coming from this line of Profile table
+  post     Post[] //? one-to-many relation
+
+  @@map("users") //? table name
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String? //? optional
+  userId Int     @unique
+  //? if userId is unique then Profile  Profile?, otherwise Profile  Profile[]
+  user   User    @relation(fields: [userId], references: [id])
+  //? user = a variable , can be any name   User    @relation(fields: [userId], references: [id])
+  //? field = foreign key (userId), reference = User table primary key (id)
+  //? userId of Profile table = id of User table
+
+  @@map("profiles")
+}
+
+model Category {
+  id           Int            @id @default(autoincrement())
+  name         String
+  postCategory PostCategory[] //? many-to-many relation
+
+  @@map("categories")
+}
+
+model PostCategory {
+  postId     Int
+  post       Post     @relation(fields: [postId], references: [id])
+  categoryId Int //? id variable
+  category   Category @relation(fields: [categoryId], references: [id]) //? relation variable
+
+  @@id([postId, categoryId]) //? composite key
+  @@map("post_category") //? intermediate table name
+}
+
+enum UserRole {
+  user
+  admin
+}
