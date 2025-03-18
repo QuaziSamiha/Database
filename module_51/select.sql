@@ -173,7 +173,133 @@ FROM students;
 SELECT email FROM students;
 
 SELECT email, age FROM students;
+
 SELECT email AS student_email FROM students;
+
 SELECT email AS "Student Email" FROM students;
+
 SELECT * FROM students ORDER BY first_name ASC;
+
 SELECT * FROM students ORDER BY age DESC;
+
+-- 17 Mar, 25
+SELECT country FROM students ORDER BY country ASC;
+
+SELECT DISTINCT country FROM students;
+
+SELECT DISTINCT blood_group FROM students;
+
+SELECT * FROM students WHERE country = 'USA';
+
+SELECT * FROM students WHERE grade = 'A' AND course = 'Physics';
+
+SELECT * FROM students WHERE blood_group = 'A+';
+
+SELECT *
+FROM students
+WHERE
+    country = 'USA'
+    AND country = 'Australia';
+
+SELECT *
+FROM students
+WHERE (
+        country = 'USA'
+        OR country = 'Australia'
+    )
+    AND age = 20;
+
+SELECT *
+FROM students
+WHERE (
+        country = 'USA'
+        OR country = 'Australia'
+    )
+    AND age > 20;
+
+SELECT upper(first_name) from students;
+
+SELECT concat(first_name, ' ', last_name) from students;
+
+SELECT length(first_name) from students;
+
+SELECT avg(age) from students;
+
+SELECT max(age) from students;
+
+SELECT count(*) from students;
+
+SELECT max(length(first_name)) from students;
+
+-- 18 Mar, 25
+-- 51-7 Logical Negation NOT, understanding NULL and the Null-Coalescing Operator in PostgreSQL
+
+SELECT NULL = NULL;
+
+SELECT NULL <> NULL;
+
+SELECT NULL = 1;
+
+SELECT * FROM students WHERE email !NULL;
+
+SELECT * FROM students WHERE email = NULL;
+
+SELECT * FROM students WHERE email IS NULL;
+
+SELECT * FROM students WHERE email IS NOT NULL;
+
+SELECT COALESCE(NULL, 5);
+
+SELECT COALESCE(NULL, NULL, 5);
+
+SELECT COALESCE(email, 5);
+
+SELECT COALESCE( email, 'email is not provided' ) FROM students;
+
+SELECT COALESCE(
+        email, 'email is not provided'
+    ), blood_group, age
+FROM students;
+
+SELECT COALESCE(
+        email, 'email is not provided'
+    ) AS "Email", blood_group, age
+FROM students;
+
+SELECT email FROM students;
+
+-- 51-8 Exploring IN, BETWEEN, LIKE, and ILIKE Operators in PostgreSQL.
+
+SELECT * FROM students WHERE country = 'USA' OR 'UK' OR 'Canada';
+
+SELECT * FROM students WHERE country IN ('USA', 'UK', 'Canada');
+
+SELECT * FROM students WHERE country NOT IN ('USA', 'UK', 'Canada');
+
+SELECT * FROM students WHERE age BETWEEN 19 AND 22;
+
+SELECT *
+FROM students
+WHERE
+    dob BETWEEN '2000-01-01' AND '2005-01-01';
+
+SELECT *
+FROM students
+WHERE
+    dob BETWEEN '2000-01-01' AND '2005-01-01'
+ORDER BY dob;
+
+SELECT * FROM students WHERE first_name LIKE '%a';
+
+SELECT * FROM students WHERE first_name LIKE 'a%';
+
+SELECT * FROM students WHERE first_name LIKE 'a%';
+
+SELECT * FROM students WHERE first_name LIKE '__a%';
+
+SELECT * FROM students WHERE first_name LIKE '___a%';
+
+SELECT * FROM students WHERE first_name LIKE '___a_';
+
+-- case insensitive
+SELECT * FROM students WHERE first_name ILIKE 'a%';

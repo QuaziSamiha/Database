@@ -41,3 +41,23 @@
   - `OFFSET`: specifies the number or rows to skip before starting to return rows.
 
 ## 51-4 Mastering SELECT Queries: Column Aliasing and Result Ordering in PostgreSQL
+
+**17 Mar, 25**
+
+## 51-5 Data Filtering: WHERE Clause, Logical Operators, and Comparison Operators
+
+- data filtering
+
+## 51-6 Exploring Scalar and Aggregate Functions in PostgreSQL
+
+- there is 2 types functions in postgress: scalar and aggregate
+
+- `scalar function`: scalar functions operate on a single value and return a single value. they perform an operation on each row's data independently.
+
+- `aggregate function`: these functions operate on a set of values and return a single value summarizing that set. They perform an operation across multiple rows, often used with the GROUP BY clause.
+
+**18 Mar, 25**
+
+## 51-7 Logical Negation NOT, understanding NULL and the Null-Coalescing Operator in PostgreSQL
+
+## 51-8 Exploring IN, BETWEEN, LIKE, and ILIKE Operators in PostgreSQL.
