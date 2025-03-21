@@ -303,3 +303,56 @@ SELECT * FROM students WHERE first_name LIKE '___a_';
 
 -- case insensitive
 SELECT * FROM students WHERE first_name ILIKE 'a%';
+
+-- 21 Mar, 25
+
+-- 51-9 Pagination with Limit Offset and Data Deletion in PostgreSQL
+
+SELECT * FROM students;
+
+SELECT * FROM students LIMIT 5;
+
+SELECT *
+FROM students
+WHERE
+    country NOT IN ('USA', 'UK', 'Canada')
+LIMIT 5;
+
+SELECT * FROM students LIMIT 5 OFFSET 2;
+
+SELECT * FROM students LIMIT 5 OFFSET 5;
+
+SELECT * FROM students LIMIT 5 OFFSET 5 * 0;
+
+SELECT * FROM students LIMIT 5 OFFSET 5 * 1;
+
+DELETE FROM students;
+
+DELETE FROM students WHERE grade = 'B';
+
+SELECT * FROM students WHERE country = 'USA';
+
+DELETE FROM students WHERE grade = 'C' AND country = 'USA';
+
+-- 51-10 Understanding and Using the UPDATE Operator in PostgreSQL
+
+UPDATE students
+SET
+    email = 'default@gmail.com'
+WHERE
+    student_id = 45;
+
+UPDATE students
+SET
+    email = 'default@gmail.com',
+    age = 30
+WHERE
+    student_id = 45;
+
+UPDATE students
+SET
+    email = 'default@gmail.com',
+    age = 30,
+    course = 'Pocha'
+WHERE
+    student_id = 45;

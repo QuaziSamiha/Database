@@ -61,3 +61,11 @@
 ## 51-7 Logical Negation NOT, understanding NULL and the Null-Coalescing Operator in PostgreSQL
 
 ## 51-8 Exploring IN, BETWEEN, LIKE, and ILIKE Operators in PostgreSQL.
+
+**21 Mar, 25**
+
+## 51-9 Pagination with Limit Offset and Data Deletion in PostgreSQL
+
+- limit and offset is required for pagination
+
+## 51-10 Understanding and Using the UPDATE Operator in PostgreSQL
