@@ -18,7 +18,9 @@
 ## 52-5 Enforcing Referential Integrity: Behaviors During Data Deletion
 
 - deletion constraint on DELETE users2:
+  - restrict deletion -> ON DELETE RESTRICT / ON DELETE NO ACTION (default)
   - cascading deletion -> ON DELETE CASCADE
   - setting null -> ON DELETE SET NULL
-  - restrict deletion -> ON DELETE RESTRICT / ON DELETE NO ACTION (default)
   - set default value -> ON DELETE SET DEFAULT
+
+**22 Mar, 25**
