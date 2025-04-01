@@ -24,3 +24,15 @@
   - set default value -> ON DELETE SET DEFAULT
 
 **22 Mar, 25**
+
+**1 April, 25**
+
+## 52-6 Joining Tables with Inner Join
+
+- Query: Retrieve all posts title with their username.
+  - given table : Post (id - (SERIAL), title - (TEXT), user_id); User (id - (SERIAL), username - (VARCHAR(25)));
+  - result table: (title (TEXT), username)
+
+## 52-7 Understanding Left and Right Joins
+
+## 52-8 Exploring Full, Cross, and Natural Joins
