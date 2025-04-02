@@ -36,3 +36,7 @@
 ## 52-7 Understanding Left and Right Joins
 
 ## 52-8 Exploring Full, Cross, and Natural Joins
+
+**2 April, 25**
+
+## 52-9 Query Practice: Part 1
