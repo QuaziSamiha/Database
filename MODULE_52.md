@@ -40,3 +40,14 @@
 **2 April, 25**
 
 ## 52-9 Query Practice: Part 1
+
+**3 April, 25**
+
+- inner join to retrieve employee and department information
+- show department name with average salary
+
+## 52-10 Query Practice: Part 2
+
+- count employees in each department
+- find the department name with the highest average salary
+- count employees hired each year
