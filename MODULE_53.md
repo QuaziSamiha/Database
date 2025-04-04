@@ -9,3 +9,25 @@
 - find customers who have placed more than 2 orders and calculate the total amount spent by each of these customers.
 
 - find the total amount of orders placed each month in the year 2022
+
+## 53-2 Exploring Subqueries
+
+- a subquery is a nested query within another SQL statement.
+
+## 53-3 Utilizing Subqueries in Different Clauses
+
+## 53-4 Exploring Views in PostgreSQL
+
+- views are virtual tables generated from the result of a SQL query
+- what is the purpose of SQL views?
+  - simplifying complex queries
+  - improved security
+  - enhanced data abstraction
+
+## 53-5 Exploring Functions in PostgreSQL
+
+- sql works in a declarative way
+- declarative means to know what to do, not how to do
+- imperative means to know how to do
+- procedural = imperative
+- non-procedural = declarative
