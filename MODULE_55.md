@@ -1,4 +1,6 @@
-**1 Mar, 25**
+# Prisma ORM Fundamental
+
+**1 Mar, 25 -- 11 August, 25**
 
 - [Github Link](https://github.com/Apollo-Level2-Web-Dev/PrismaMastery)
 
@@ -70,7 +72,7 @@
 
     <br> modify tsconfig.json file --- set root directory
 
-    ```
+    ```bash
     npx prisma
     ```
 
@@ -100,6 +102,9 @@ npx prisma migrate dev
 yarn add ts-node-dev --dev
 ```
 
+- To convert prisma schema to SQL for database
+- then give a table name
+
 **3 Mar, 25 & 4 Mar, 25**
 
 ## 55-4 Inserting Data into the Database and Retrieving All Records
@@ -127,6 +132,10 @@ npx prisma studio
 ```
 
 - create and find operation in prisma
+
+- prisma client -- type safety
+- prisma migrate -- model to query language
+- prisma studio -- provide a GUI 
 
 **4 Mar, 25**
 
